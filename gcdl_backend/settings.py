@@ -27,9 +27,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+# CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Vite default port
+    "http://localhost:5173",  # Vite
+    "http://127.0.0.1:5173",
 ]
+
+CORS_ALLOW_CREDENTIALS = True  # For sessions
+
+# Sessions (required for auth)
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False  # Set True in prod
+
+
 # Application definition
 
 INSTALLED_APPS = [
