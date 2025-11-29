@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, RegexValidator
 
 class Produce(models.Model):
-    name = models.CharField(max_length=50)  # e.g., specific variety
+    name = models.CharField(max_length=50)
     type = models.CharField(
         max_length=20,
         choices=[
@@ -54,7 +54,7 @@ class Sale(models.Model):
     agent = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'groups__name': 'Agent'})
     date_time = models.DateTimeField(auto_now_add=True)
     is_credit = models.BooleanField(default=False)
-    receipt_id = models.CharField(max_length=50, unique=True, blank=True)  # Auto-generate in save()
+    receipt_id = models.CharField(max_length=50, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.receipt_id:
